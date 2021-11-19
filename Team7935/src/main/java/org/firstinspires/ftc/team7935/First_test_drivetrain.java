@@ -27,12 +27,15 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.robotcontroller.external.samples;
+package org.firstinspires.ftc.team7935;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
+
+import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 
 /**
  * This file provides basic Telop driving for a Pushbot robot.
@@ -51,7 +54,7 @@ import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name="Pushbot: Teleop Tank", group="Pushbot")
 @Disabled
-public class PushbotTeleopTank_Iterative extends OpMode{
+public class First_test_drivetrain extends OpMode{
 
     /* Declare OpMode members. */
     HardwarePushbot robot       = new HardwarePushbot(); // use the class created to define a Pushbot's hardware
@@ -61,8 +64,10 @@ public class PushbotTeleopTank_Iterative extends OpMode{
     /*
      * Code to run ONCE when the driver hits INIT
      */
-
-
+    private DcMotor frontright = null;
+    private DcMotor frontleft = null;
+    private DcMotor backright = null;
+    private DcMotor backleft = null;
 
 
     @Override
@@ -74,6 +79,7 @@ public class PushbotTeleopTank_Iterative extends OpMode{
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "Hello Driver");    //
+       // frontright = hardwareMap.get(DcMotor.class, frontright);
     }
 
     /*
@@ -81,6 +87,8 @@ public class PushbotTeleopTank_Iterative extends OpMode{
      */
     @Override
     public void init_loop() {
+
+
     }
 
     /*
@@ -97,6 +105,7 @@ public class PushbotTeleopTank_Iterative extends OpMode{
     public void loop() {
         double left;
         double right;
+
 
         // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
         left = -gamepad1.left_stick_y;
